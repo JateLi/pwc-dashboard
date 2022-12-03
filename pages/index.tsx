@@ -2,10 +2,21 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import Chart from "../components/Chart";
+import CPIUSChart from "../components/CPIUSChart";
 import DateRangePicker from "../components/DateRangePicker";
 import styles from "../styles/Home.module.css";
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
+
+export const api = "https://www.econdb.com/api/series";
+
+export enum SeriesCode {
+  cpius = "CPIUS",
+  confus = "CONFUS",
+  retaus = "RETAUS",
+  sentus = "SENTUS",
+  popus = "POPUS",
+}
 
 export default function Home() {
   const [startDate, setStartDate] = useState<string>("2015-01-01");
@@ -40,31 +51,34 @@ export default function Home() {
 
         {/* <div className={styles.grid}> */}
         <div className={" grid grid-cols-2 gap-4"}>
-          <Chart
-            labels={labels}
-            chartData={[]}
-            scale={1}
-            title={"Test Title"}
-          />
+          <CPIUSChart startDate={startDate} endDate={endDate} />
+          <div className="chart-container">
+            <Chart
+              labels={labels}
+              chartData={[]}
+              scale={1}
+              title={"Test Title"}
+            />
+          </div>
+          <div className="chart-container">
+            <Chart
+              labels={labels}
+              chartData={[]}
+              scale={1}
+              title={"Test Title"}
+            />
+          </div>
 
-          <Chart
-            labels={labels}
-            chartData={[]}
-            scale={1}
-            title={"Test Title"}
-          />
-          <Chart
-            labels={labels}
-            chartData={[]}
-            scale={1}
-            title={"Test Title"}
-          />
-          <Chart
-            labels={labels}
-            chartData={[]}
-            scale={1}
-            title={"Test Title"}
-          />
+          <div className="label-container border-2 border-black ">
+            <div>
+              <p>{"Average US Sentiment Index (SENTUS)"}</p>
+              <p>{"Number"}</p>
+            </div>
+            <div>
+              <p>{"Population growth during the selected period (POPUS)"}</p>
+              <p>{"Number"}</p>
+            </div>
+          </div>
           {/* <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
