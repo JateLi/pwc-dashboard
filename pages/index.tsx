@@ -1,8 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
+import Chart from "../components/Chart";
 import DateRangePicker from "../components/DateRangePicker";
 import styles from "../styles/Home.module.css";
+
+const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
 export default function Home() {
   const [startDate, setStartDate] = useState<string>("2015-01-01");
@@ -23,9 +26,9 @@ export default function Home() {
         {/* <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1> */}
-        <div className={"header bg-gray-100 flex flex-row justify-evenly"}>
+        <div className={"header flex flex-row justify-evenly"}>
           <div>
-            <p>Economic Dashboard </p>
+            <p className="text-3xl font-bold">Economic Dashboard </p>
           </div>
           <DateRangePicker
             startDate={startDate}
@@ -35,22 +38,41 @@ export default function Home() {
           />
         </div>
 
-        {/* <p className={styles.description}>
-          Get started by editing{" "}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p> */}
+        {/* <div className={styles.grid}> */}
+        <div className={" grid grid-cols-2 gap-4"}>
+          <Chart
+            labels={labels}
+            chartData={[]}
+            scale={1}
+            title={"Test Title"}
+          />
 
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
+          <Chart
+            labels={labels}
+            chartData={[]}
+            scale={1}
+            title={"Test Title"}
+          />
+          <Chart
+            labels={labels}
+            chartData={[]}
+            scale={1}
+            title={"Test Title"}
+          />
+          <Chart
+            labels={labels}
+            chartData={[]}
+            scale={1}
+            title={"Test Title"}
+          />
+          {/* <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
             <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
+          </a> */}
+          {/* <a href="https://nextjs.org/learn" className={styles.card}>
             <h2>Learn &rarr;</h2>
             <p>Learn about Next.js in an interactive course with quizzes!</p>
           </a>
-
           <a
             href="https://github.com/vercel/next.js/tree/canary/examples"
             className={styles.card}
@@ -58,7 +80,6 @@ export default function Home() {
             <h2>Examples &rarr;</h2>
             <p>Discover and deploy boilerplate example Next.js projects.</p>
           </a>
-
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
             target="_blank"
@@ -69,7 +90,7 @@ export default function Home() {
             <p>
               Instantly deploy your Next.js site to a public URL with Vercel.
             </p>
-          </a>
+          </a> */}
         </div>
       </main>
 
