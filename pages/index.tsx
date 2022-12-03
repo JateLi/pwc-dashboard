@@ -2,8 +2,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import Chart from "../components/Chart";
+import CONFUSChart from "../components/CONFUSChart";
 import CPIUSChart from "../components/CPIUSChart";
 import DateRangePicker from "../components/DateRangePicker";
+import RETAUSChart from "../components/RETAUSChart";
 import styles from "../styles/Home.module.css";
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
@@ -52,22 +54,8 @@ export default function Home() {
         {/* <div className={styles.grid}> */}
         <div className={" grid grid-cols-2 gap-4"}>
           <CPIUSChart startDate={startDate} endDate={endDate} />
-          <div className="chart-container">
-            <Chart
-              labels={labels}
-              chartData={[]}
-              scale={1}
-              title={"Test Title"}
-            />
-          </div>
-          <div className="chart-container">
-            <Chart
-              labels={labels}
-              chartData={[]}
-              scale={1}
-              title={"Test Title"}
-            />
-          </div>
+          <CONFUSChart startDate={startDate} endDate={endDate} />
+          <RETAUSChart startDate={startDate} endDate={endDate} />
 
           <div className="label-container border-2 border-black ">
             <div>
