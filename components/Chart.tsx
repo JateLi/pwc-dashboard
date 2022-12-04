@@ -62,13 +62,13 @@ function Chart({
     labels,
     datasets: [
       {
-        label: "default",
+        label: "Original",
         data: chartData,
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
-        label: "scales",
+        label: "scaled",
         data: scale === 1 ? [] : chartData.map((x) => x * scale),
         borderColor: "rgba(38, 208, 235, 0.9)",
         backgroundColor: "rgba(38, 208, 235, 0.5)",

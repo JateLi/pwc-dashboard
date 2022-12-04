@@ -26,10 +26,14 @@ function SENTUSLabel({ startDate, endDate }: Props) {
     dataFetch();
   }, [endDate, startDate]);
 
+  const averageValue = calculateAverageNum(sentusData?.chartData ?? []);
+
   return (
-    <div>
+    <div className="w-2/3 pt-0">
       <p>{"Average US Sentiment Index (SENTUS)"}</p>
-      <p>{calculateAverageNum(sentusData?.chartData ?? [])}</p>
+      <p className={averageValue > 0 ? "text-emerald-600" : "text-rose-700"}>
+        {averageValue}
+      </p>
     </div>
   );
 }
