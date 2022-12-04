@@ -6,6 +6,7 @@ import CONFUSChart from "../components/CONFUSChart";
 import CPIUSChart from "../components/CPIUSChart";
 import DateRangePicker from "../components/DateRangePicker";
 import RETAUSChart from "../components/RETAUSChart";
+import SliderBar from "../components/SliderBar";
 import styles from "../styles/Home.module.css";
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
@@ -23,6 +24,7 @@ export enum SeriesCode {
 export default function Home() {
   const [startDate, setStartDate] = useState<string>("2015-01-01");
   const [endDate, setEndDate] = useState<string>("2021-01-01");
+  const [scaleValue, setScaleValue] = useState(1);
 
   return (
     <div className={styles.container}>
@@ -36,9 +38,6 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        {/* <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1> */}
         <div className={"header flex flex-row justify-evenly"}>
           <div>
             <p className="text-3xl font-bold">Economic Dashboard </p>
@@ -49,12 +48,21 @@ export default function Home() {
             setStartDate={setStartDate}
             setEndDate={setEndDate}
           />
+          <SliderBar scaleValue={scaleValue} setScaleValue={setScaleValue} />
         </div>
 
         {/* <div className={styles.grid}> */}
         <div className={" grid grid-cols-2 gap-4"}>
-          <CPIUSChart startDate={startDate} endDate={endDate} />
-          <CONFUSChart startDate={startDate} endDate={endDate} />
+          <CPIUSChart
+            startDate={startDate}
+            endDate={endDate}
+            scale={scaleValue}
+          />
+          <CONFUSChart
+            startDate={startDate}
+            endDate={endDate}
+            scale={scaleValue}
+          />
           <RETAUSChart startDate={startDate} endDate={endDate} />
 
           <div className="label-container border-2 border-black ">
@@ -108,7 +116,6 @@ export default function Home() {
           </span>
         </a>
       </footer>
-      {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
     </div>
   );
 }

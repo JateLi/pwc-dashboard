@@ -6,9 +6,10 @@ import { ChartDataType } from "./CPIUSChart";
 type Props = {
   startDate: string;
   endDate: string;
+  scale?: number;
 };
 
-function CONFUSChart({ startDate, endDate }: Props) {
+function CONFUSChart({ startDate, endDate, scale }: Props) {
   const [confusData, setConfusData] = useState<ChartDataType>();
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
@@ -32,7 +33,7 @@ function CONFUSChart({ startDate, endDate }: Props) {
       <Chart
         labels={confusData?.labels ?? []}
         chartData={confusData?.chartData ?? []}
-        scale={1}
+        scale={scale}
         title={confusData?.title ?? ""}
       />
     </div>

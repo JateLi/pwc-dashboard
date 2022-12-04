@@ -66,6 +66,12 @@ function Chart({
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
+      {
+        label: "scales",
+        data: scale === 1 ? [] : chartData.map((x) => x * scale),
+        borderColor: "rgba(38, 208, 235, 0.9)",
+        backgroundColor: "rgba(38, 208, 235, 0.5)",
+      },
     ],
   };
 

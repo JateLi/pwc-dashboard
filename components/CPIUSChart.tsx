@@ -11,9 +11,10 @@ export type ChartDataType = {
 type Props = {
   startDate: string;
   endDate: string;
+  scale?: number;
 };
 
-function CPIUSChart({ startDate, endDate }: Props) {
+function CPIUSChart({ startDate, endDate, scale }: Props) {
   const [cpiusData, setCpiusData] = useState<ChartDataType>();
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
@@ -37,7 +38,7 @@ function CPIUSChart({ startDate, endDate }: Props) {
       <Chart
         labels={cpiusData?.labels ?? []}
         chartData={cpiusData?.chartData ?? []}
-        scale={1}
+        scale={scale}
         title={cpiusData?.title ?? ""}
       />
     </div>
