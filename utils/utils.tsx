@@ -5,7 +5,7 @@ export const stringToDate = (stringDate: string) =>
 
 export const calculateAverageNum = (arr: number[]) => {
   if (arr.length < 1) return 0;
-  return (arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(4);
+  return Number((arr.reduce((a, b) => a + b, 0) / arr.length).toFixed(4)) * 1;
 };
 
 export const calculateGrowthValue = (arr: number[]) => {
