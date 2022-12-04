@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useMemo } from "react";
+import React, { Dispatch, SetStateAction, useCallback, useMemo } from "react";
 
 export type SliderBarProps = {
   scaleValue: number;
@@ -12,6 +12,14 @@ function SliderBar({ scaleValue, setScaleValue }: SliderBarProps) {
   // Convert scale value to slider value.
   const sliderValue = useMemo(() => (scaleValue - 1) / 0.5 + 1, [scaleValue]);
 
+  const handleOnChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = parseInt(event.target.value);
+      setScaleValue(covertToScaleValue(value));
+    },
+    []
+  );
+
   return (
     <div className="flex flex-row mx-5">
       <span className="pr-2">Scale</span>
@@ -23,10 +31,7 @@ function SliderBar({ scaleValue, setScaleValue }: SliderBarProps) {
           max="3"
           value={sliderValue}
           id="myRange"
-          onChange={(e) => {
-            const value = parseInt(e.target.value);
-            setScaleValue(covertToScaleValue(value));
-          }}
+          onChange={handleOnChange}
         />
         <div className="flex flex-row justify-between w-30 -mt-2">
           <div>

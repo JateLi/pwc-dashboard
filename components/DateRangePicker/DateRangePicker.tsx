@@ -30,6 +30,11 @@ const CalenderIcon = () => (
   </div>
 );
 
+const convertToFirstDayOfMonth = (date: Date) => {
+  const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+  return format(firstDay, "yyyy-MM-dd");
+};
+
 function DateRangePicker({
   startDate,
   endDate,
@@ -38,11 +43,6 @@ function DateRangePicker({
 }: DatePickerProps) {
   const selectedStartDate = stringToDate(startDate);
   const selectedEndDate = stringToDate(endDate);
-
-  const convertToFirstDayOfMonth = (date: Date) => {
-    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    return format(firstDay, "yyyy-MM-dd");
-  };
 
   return (
     <div className="flex flex-row items-center">
