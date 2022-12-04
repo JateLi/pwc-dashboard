@@ -31,7 +31,11 @@ function SENTUSLabel({ startDate, endDate }: Props) {
   return (
     <div className="w-2/3 pt-0">
       <p>{"Average US Sentiment Index (SENTUS)"}</p>
-      <p className={averageValue > 0 ? "text-emerald-600" : "text-rose-700"}>
+      <p
+        className={`text-lg font-semibold ${
+          averageValue > 0 ? "text-emerald-600" : "text-rose-700"
+        }`}
+      >
         {averageValue}
       </p>
     </div>

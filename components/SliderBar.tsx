@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useMemo } from "react";
 
-type SliderBarProps = {
+export type SliderBarProps = {
   scaleValue: number;
   setScaleValue: Dispatch<SetStateAction<number>>;
 };

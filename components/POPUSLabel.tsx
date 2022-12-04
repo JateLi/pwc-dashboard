@@ -29,7 +29,9 @@ function POPUSLabel({ startDate, endDate }: Props) {
   return (
     <div className="w-2/3 pt-5">
       <p>{"Population growth during the selected period (POPUS)"}</p>
-      <p>{calculateGrowthValue(popusData?.chartData ?? [])}</p>
+      <p className={`text-lg font-semibold`}>
+        {calculateGrowthValue(popusData?.chartData ?? [])}
+      </p>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { stringToDate } from "../utils/utils";
 import styles from "../styles/DateRangePicker.module.css";
 
-type Props = {
+export type DatePickerProps = {
   startDate: string;
   endDate: string;
   setStartDate: Dispatch<SetStateAction<string>>;
@@ -17,7 +17,7 @@ function DateRangePicker({
   endDate,
   setStartDate,
   setEndDate,
-}: Props) {
+}: DatePickerProps) {
   const selectedStartDate = stringToDate(startDate);
   const selectedEndDate = stringToDate(endDate);
 

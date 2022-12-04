@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import CONFUSChart from "../components/CONFUSChart";
 import CPIUSChart from "../components/CPIUSChart";
+import DashboardHeader from "../components/DashboardHeader";
 import DateRangePicker from "../components/DateRangePicker";
 import POPUSLabel from "../components/POPUSLabel";
 import RETAUSChart from "../components/RETAUSChart";
@@ -36,23 +37,14 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <div
-          className={
-            "flex flex-row justify-evenly items-center py-5 border-b-2 border-black"
-          }
-        >
-          <div>
-            <p className="text-3xl font-bold">Economic Dashboard </p>
-          </div>
-          <DateRangePicker
-            startDate={startDate}
-            endDate={endDate}
-            setStartDate={setStartDate}
-            setEndDate={setEndDate}
-          />
-          <SliderBar scaleValue={scaleValue} setScaleValue={setScaleValue} />
-        </div>
-
+        <DashboardHeader
+          startDate={startDate}
+          endDate={endDate}
+          setStartDate={setStartDate}
+          setEndDate={setEndDate}
+          scaleValue={scaleValue}
+          setScaleValue={setScaleValue}
+        />
         <div className={" grid grid-cols-1 gap-4 lg:grid-cols-2 pt-5 "}>
           <CPIUSChart
             startDate={startDate}
