@@ -14,8 +14,9 @@ function SliderBar({ scaleValue, setScaleValue }: SliderBarProps) {
     (sliderValue - 1) * 0.5 + 1;
 
   return (
-    <div>
+    <div className="mx-5">
       <input
+        className="w-30"
         type="range"
         min="1"
         max="3"
@@ -26,6 +27,14 @@ function SliderBar({ scaleValue, setScaleValue }: SliderBarProps) {
           setScaleValue(covertToScaleValue(value));
         }}
       />
+      <div className="flex flex-row justify-between w-30 -mt-2">
+        <div>
+          <span>1</span>
+        </div>
+        <div>
+          <span>2</span>
+        </div>
+      </div>
     </div>
   );
 }

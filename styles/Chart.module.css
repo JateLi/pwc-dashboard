@@ -1,0 +1,13 @@
+.container {
+   position: relative;
+   margin:auto;
+   width: 45vw;
+   height: 45vh;
+}
+
+@media (max-width: 900px) {
+    .container {
+        width: 85vw;
+        height: 45vh;
+    }
+}

@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import styles from "../styles/Chart.module.css";
 
 ChartJS.register(
   CategoryScale,
@@ -76,9 +77,9 @@ function Chart({
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {type === "line" ? (
-        <Line data={data} options={options} style={{ position: "relative" }} />
+        <Line data={data} options={options} />
       ) : (
         <Bar options={options} data={data} />
       )}

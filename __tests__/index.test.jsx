@@ -1,9 +1,11 @@
 import "@testing-library/jest-dom";
+import { calculateAverageNum } from "../utils/utils";
 
-function sum(a, b) {
-  return a + b;
-}
+const emptyArray = [];
 
-test("adds 1 + 2 to equal 3", () => {
-  expect(sum(1, 2)).toBe(3);
+const numberArray = [1, 2, 3, 4, 5, 7, 8, 9];
+
+test("Calculate average number of an array", () => {
+  expect(calculateAverageNum(emptyArray)).toBe(0);
+  expect(calculateAverageNum(numberArray)).toBe(4.875);
 });
