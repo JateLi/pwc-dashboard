@@ -1,0 +1,39 @@
+.container {
+   position: relative;
+   margin:auto;
+   width: 45vw;
+   height: 45vh;
+
+align-items: center;
+justify-content: center;
+display: flex;
+}
+
+@media (max-width: 1000px) {
+    .container {
+        width: 85vw;
+        height: 45vh;
+    }
+}
+
+
+.loader {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+    margin: auto;
+    
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

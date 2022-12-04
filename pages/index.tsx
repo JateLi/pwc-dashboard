@@ -3,22 +3,10 @@ import { useState } from "react";
 import CONFUSChart from "../components/CONFUSChart";
 import CPIUSChart from "../components/CPIUSChart";
 import DashboardHeader from "../components/DashboardHeader";
-import DateRangePicker from "../components/DateRangePicker";
 import POPUSLabel from "../components/POPUSLabel";
 import RETAUSChart from "../components/RETAUSChart";
 import SENTUSLabel from "../components/SENTUSLabel";
-import SliderBar from "../components/SliderBar";
 import styles from "../styles/Home.module.css";
-
-export const EcondbApi = "https://www.econdb.com/api/series";
-
-export enum SeriesCode {
-  cpius = "CPIUS",
-  confus = "CONFUS",
-  retaus = "RETAUS",
-  sentus = "SENTUS",
-  popus = "POPUS",
-}
 
 export default function Home() {
   const [startDate, setStartDate] = useState<string>("2015-01-01");

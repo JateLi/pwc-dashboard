@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { EcondbApi, SeriesCode } from "../pages";
+import { EcondbApi, SeriesCode } from "../api";
 import { calculateGrowthValue } from "../utils/utils";
 import { ChartDataType } from "./CPIUSChart";
 
@@ -10,6 +10,7 @@ type Props = {
 
 function POPUSLabel({ startDate, endDate }: Props) {
   const [popusData, setPopusData] = useState<ChartDataType>();
+
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
     const api = `${EcondbApi}/${SeriesCode.popus}/?${dateRange}&format=json`;
@@ -23,12 +24,12 @@ function POPUSLabel({ startDate, endDate }: Props) {
       setPopusData(updateData);
     };
 
-    dataFetch();
+    dataFetch().catch((error) => console.log(error));
   }, [endDate, startDate]);
 
   return (
     <div className="w-2/3 pt-5">
-      <p>{"Population growth during the selected period (POPUS)"}</p>
+      <p>Population growth during the selected period (POPUS)</p>
       <p className={`text-lg font-semibold`}>
         {calculateGrowthValue(popusData?.chartData ?? [])}
       </p>

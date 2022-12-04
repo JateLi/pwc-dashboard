@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { EcondbApi, SeriesCode } from "../pages";
-import Chart from "./Chart";
+import { EcondbApi, SeriesCode } from "../api";
+import Chart from "./Chart/Chart";
 import { ChartDataType } from "./CPIUSChart";
 
 type Props = {
@@ -10,9 +10,12 @@ type Props = {
 
 function RETAUSChart({ startDate, endDate }: Props) {
   const [retausData, setRetausData] = useState<ChartDataType>();
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
     const retausApi = `${EcondbApi}/${SeriesCode.retaus}/?${dateRange}&format=json`;
+    setLoading(true);
     const dataFetch = async () => {
       const data = await (await fetch(retausApi)).json();
       const updateData = {
@@ -20,20 +23,22 @@ function RETAUSChart({ startDate, endDate }: Props) {
         chartData: data.data.values,
         title: `${data.ticker} - ${data.description}`,
       };
+      setLoading(false);
       setRetausData(updateData);
     };
 
-    dataFetch();
+    dataFetch().catch((error) => console.log(error));
   }, [endDate, startDate]);
 
   return (
-    <div className="chart-container">
+    <div>
       <Chart
         labels={retausData?.labels ?? []}
         chartData={retausData?.chartData ?? []}
         scale={1}
         title={retausData?.title ?? ""}
-        type={"vertical"}
+        type={"bar"}
+        loading={loading}
       />
     </div>
   );

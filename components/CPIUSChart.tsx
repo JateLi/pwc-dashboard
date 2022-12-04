@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { EcondbApi, SeriesCode } from "../pages";
-import Chart from "./Chart";
+import { EcondbApi, SeriesCode } from "../api";
+import Chart from "./Chart/Chart";
 
 export type ChartDataType = {
   labels: string[];
@@ -16,30 +16,34 @@ type Props = {
 
 function CPIUSChart({ startDate, endDate, scale }: Props) {
   const [cpiusData, setCpiusData] = useState<ChartDataType>();
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
     const cpiusApi = `${EcondbApi}/${SeriesCode.cpius}/?${dateRange}&format=json`;
+    setLoading(true);
     const dataFetch = async () => {
       const data = await (await fetch(cpiusApi)).json();
-      console.log(data);
       const updateData = {
         labels: data.data.dates,
         chartData: data.data.values,
         title: `${data.ticker} - ${data.description}`,
       };
+      setLoading(false);
       setCpiusData(updateData);
     };
 
-    dataFetch();
+    dataFetch().catch((error) => console.log(error));
   }, [endDate, startDate]);
 
   return (
-    <div className="chart-container">
+    <div>
       <Chart
         labels={cpiusData?.labels ?? []}
         chartData={cpiusData?.chartData ?? []}
         scale={scale}
         title={cpiusData?.title ?? ""}
+        loading={loading}
       />
     </div>
   );

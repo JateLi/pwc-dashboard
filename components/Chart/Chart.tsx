@@ -11,7 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import styles from "../styles/Chart.module.css";
+import styles from "./Chart.module.css";
 
 ChartJS.register(
   CategoryScale,
@@ -28,8 +28,9 @@ type ChartProps = {
   title: string;
   labels: string[];
   chartData: number[];
-  type?: string;
+  type?: "line" | "bar";
   scale?: number;
+  loading?: boolean;
 };
 
 function Chart({
@@ -38,6 +39,7 @@ function Chart({
   chartData = [],
   type = "line",
   scale = 1,
+  loading = true,
 }: ChartProps) {
   const options = {
     responsive: true,
@@ -75,6 +77,13 @@ function Chart({
       },
     ],
   };
+
+  if (loading)
+    return (
+      <div className={styles.container}>
+        <div className={styles.loader} />
+      </div>
+    );
 
   return (
     <div className={styles.container}>

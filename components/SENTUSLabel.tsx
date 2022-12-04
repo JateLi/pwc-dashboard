@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { EcondbApi, SeriesCode } from "../pages";
+import { EcondbApi, SeriesCode } from "../api";
 import { calculateAverageNum } from "../utils/utils";
 import { ChartDataType } from "./CPIUSChart";
 
@@ -10,6 +10,7 @@ type Props = {
 
 function SENTUSLabel({ startDate, endDate }: Props) {
   const [sentusData, setSentusData] = useState<ChartDataType>();
+
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
     const api = `${EcondbApi}/${SeriesCode.sentus}/?${dateRange}&format=json`;
@@ -23,14 +24,14 @@ function SENTUSLabel({ startDate, endDate }: Props) {
       setSentusData(updateData);
     };
 
-    dataFetch();
+    dataFetch().catch((error) => console.log(error));
   }, [endDate, startDate]);
 
   const averageValue = calculateAverageNum(sentusData?.chartData ?? []);
 
   return (
     <div className="w-2/3 pt-0">
-      <p>{"Average US Sentiment Index (SENTUS)"}</p>
+      <p>Average US Sentiment Index (SENTUS)</p>
       <p
         className={`text-lg font-semibold ${
           averageValue > 0 ? "text-emerald-600" : "text-rose-700"

@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { calculateAverageNum, calculateGrowthValue } from "../utils/utils";
+import { calculateAverageNum, calculateGrowthValue } from "../utils";
 
 const emptyArray = [];
 

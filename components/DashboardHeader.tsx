@@ -1,5 +1,7 @@
 import React from "react";
-import DateRangePicker, { DatePickerProps } from "./DateRangePicker";
+import DateRangePicker, {
+  DatePickerProps,
+} from "./DateRangePicker/DateRangePicker";
 import SliderBar, { SliderBarProps } from "./SliderBar";
 
 type Props = DatePickerProps & SliderBarProps;

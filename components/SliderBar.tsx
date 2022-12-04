@@ -5,13 +5,12 @@ export type SliderBarProps = {
   setScaleValue: Dispatch<SetStateAction<number>>;
 };
 
+// Convert slider changed value to scale value.
+const covertToScaleValue = (sliderValue: number) => (sliderValue - 1) * 0.5 + 1;
+
 function SliderBar({ scaleValue, setScaleValue }: SliderBarProps) {
   // Convert scale value to slider value.
   const sliderValue = useMemo(() => (scaleValue - 1) / 0.5 + 1, [scaleValue]);
-
-  // Convert slider changed value to scale value.
-  const covertToScaleValue = (sliderValue: number) =>
-    (sliderValue - 1) * 0.5 + 1;
 
   return (
     <div className="flex flex-row mx-5">

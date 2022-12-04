@@ -2,8 +2,8 @@ import React, { Dispatch, SetStateAction } from "react";
 import DatePicker from "react-datepicker";
 import { format } from "date-fns";
 import "react-datepicker/dist/react-datepicker.css";
-import { stringToDate } from "../utils/utils";
-import styles from "../styles/DateRangePicker.module.css";
+import { stringToDate } from "../../utils/utils";
+import styles from "./DateRangePicker.module.css";
 
 export type DatePickerProps = {
   startDate: string;
