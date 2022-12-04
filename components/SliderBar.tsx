@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useCallback, useMemo } from "react";
+import React, { Dispatch, SetStateAction, useMemo } from "react";
 
 type SliderBarProps = {
   scaleValue: number;

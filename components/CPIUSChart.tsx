@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { api, SeriesCode } from "../pages";
+import { EcondbApi, SeriesCode } from "../pages";
 import Chart from "./Chart";
 
 export type ChartDataType = {
@@ -18,7 +18,7 @@ function CPIUSChart({ startDate, endDate, scale }: Props) {
   const [cpiusData, setCpiusData] = useState<ChartDataType>();
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
-    const cpiusApi = `${api}/${SeriesCode.cpius}/?${dateRange}&format=json`;
+    const cpiusApi = `${EcondbApi}/${SeriesCode.cpius}/?${dateRange}&format=json`;
     const dataFetch = async () => {
       const data = await (await fetch(cpiusApi)).json();
       console.log(data);

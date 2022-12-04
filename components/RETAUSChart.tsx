@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { api, SeriesCode } from "../pages";
+import { EcondbApi, SeriesCode } from "../pages";
 import Chart from "./Chart";
 import { ChartDataType } from "./CPIUSChart";
 
@@ -12,7 +12,7 @@ function RETAUSChart({ startDate, endDate }: Props) {
   const [retausData, setRetausData] = useState<ChartDataType>();
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
-    const retausApi = `${api}/${SeriesCode.retaus}/?${dateRange}&format=json`;
+    const retausApi = `${EcondbApi}/${SeriesCode.retaus}/?${dateRange}&format=json`;
     const dataFetch = async () => {
       const data = await (await fetch(retausApi)).json();
       const updateData = {

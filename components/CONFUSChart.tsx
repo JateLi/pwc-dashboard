@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { api, SeriesCode } from "../pages";
+import { EcondbApi, SeriesCode } from "../pages";
 import Chart from "./Chart";
 import { ChartDataType } from "./CPIUSChart";
 
@@ -13,7 +13,7 @@ function CONFUSChart({ startDate, endDate, scale }: Props) {
   const [confusData, setConfusData] = useState<ChartDataType>();
   useEffect(() => {
     const dateRange = `from=${startDate}&to=${endDate}`;
-    const confusApi = `${api}/${SeriesCode.confus}/?${dateRange}&format=json`;
+    const confusApi = `${EcondbApi}/${SeriesCode.confus}/?${dateRange}&format=json`;
     const dataFetch = async () => {
       const data = await (await fetch(confusApi)).json();
       console.log(data);

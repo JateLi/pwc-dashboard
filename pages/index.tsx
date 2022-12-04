@@ -5,13 +5,15 @@ import Chart from "../components/Chart";
 import CONFUSChart from "../components/CONFUSChart";
 import CPIUSChart from "../components/CPIUSChart";
 import DateRangePicker from "../components/DateRangePicker";
+import POPUSLabel from "../components/POPUSLabel";
 import RETAUSChart from "../components/RETAUSChart";
+import SENTUSLabel from "../components/SENTUSLabel";
 import SliderBar from "../components/SliderBar";
 import styles from "../styles/Home.module.css";
 
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
-export const api = "https://www.econdb.com/api/series";
+export const EcondbApi = "https://www.econdb.com/api/series";
 
 export enum SeriesCode {
   cpius = "CPIUS",
@@ -66,14 +68,8 @@ export default function Home() {
           <RETAUSChart startDate={startDate} endDate={endDate} />
 
           <div className="label-container border-2 border-black ">
-            <div>
-              <p>{"Average US Sentiment Index (SENTUS)"}</p>
-              <p>{"Number"}</p>
-            </div>
-            <div>
-              <p>{"Population growth during the selected period (POPUS)"}</p>
-              <p>{"Number"}</p>
-            </div>
+            <SENTUSLabel startDate={startDate} endDate={endDate} />
+            <POPUSLabel startDate={startDate} endDate={endDate} />
           </div>
           {/* <a href="https://nextjs.org/docs" className={styles.card}>
             <h2>Documentation &rarr;</h2>
